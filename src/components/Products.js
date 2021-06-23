@@ -47,8 +47,8 @@ const Products = () => {
 
   const products =
     listOfProducts.products &&
-    listOfProducts.products.map((products) => (
-      <Grid item>
+    listOfProducts.products.map((products, idx) => (
+      <Grid key={idx} item>
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
