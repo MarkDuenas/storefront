@@ -4,7 +4,7 @@
 
 [Deployed Link](https://unruffled-goldwasser-f4438d.netlify.app/)
 
-[Pull Req](https://github.com/MarkDuenas/to-do/pull/1)
+[Pull Req](https://github.com/MarkDuenas/storefront/pull/2)
 
 ## Set up
 
