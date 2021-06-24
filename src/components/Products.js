@@ -43,7 +43,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(start());
-  }, []);
+  }, [dispatch]);
 
   const products =
     listOfProducts.products &&
