@@ -2,7 +2,7 @@
 
 ## Author: Mark Duenas
 
-[Deployed Link](https://todo-app-simple.netlify.app/)
+[Deployed Link](https://unruffled-goldwasser-f4438d.netlify.app/)
 
 [Pull Req](https://github.com/MarkDuenas/to-do/pull/1)
 
