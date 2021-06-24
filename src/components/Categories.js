@@ -12,9 +12,10 @@ const Categories = () => {
   const change = (value) => {
     dispatch(changeCategory(value));
   };
+
   useEffect(() => {
     dispatch(initialize());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
