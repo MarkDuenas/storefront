@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { start } from "../store/products";
+import { add } from "../store/cart";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -45,37 +46,55 @@ const Products = () => {
     dispatch(start());
   }, [dispatch]);
 
+  const addToCart = (item) => {
+    dispatch(add(item));
+  };
+
   const products =
     listOfProducts.products &&
-    listOfProducts.products.map((products, idx) => (
-      <Grid key={idx} item>
-        <Card className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={products.image}
-              title={products.name}
-            />
-            <CardContent>
-              <Typography gutterBottom variant='h5' compoenent='h2'>
-                {products.name}
-              </Typography>
-              <Typography variant='body2' color='textSecondary' compoenent='p'>
-                {products.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size='small' color='primary'>
-              Add to Cart
-            </Button>
-            <Button size='small' color='primary'>
-              View Details
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-    ));
+    listOfProducts.products.map(
+      (product, idx) =>
+        product.stock > 0 && (
+          <Grid key={idx} item>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={product.image}
+                  title={product.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant='h5' compoenent='h2'>
+                    {product.name}
+                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    {product.description}
+                  </Typography>
+                  <Typography variant='body2' color='secondary' component='p'>
+                    Stock: {product.stock}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button
+                  onClick={() => addToCart(product)}
+                  size='small'
+                  color='primary'
+                >
+                  Add to Cart
+                </Button>
+                <Button size='small' color='primary'>
+                  View Details
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        )
+    );
 
   return (
     <>
@@ -85,9 +104,10 @@ const Products = () => {
       </div>
       <div className={classes.grid}>
         <Grid
+          spacing={4}
           container
           direction='row'
-          justify='space-around'
+          justify='center'
           alignItems='center'
         >
           {products}
